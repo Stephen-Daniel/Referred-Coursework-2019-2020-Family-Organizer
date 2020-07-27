@@ -20,30 +20,30 @@
   <body>
    
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Brand/logo -->
-  <a class="navbar-brand" href="#">Family Organiser</a>
+  
+  <a class="navbar-brand" href="index.php" style="color:aquamarine">Family Organiser</a>
   
   <!-- Links -->
   <ul class="navbar-nav"> 
   
 	<li class="nav-item">
-      <a class="nav-link" href="index 2.php">Home</a>
+      <a class="nav-link" href="index.php" style="color:aquamarine">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="3b-products.php">Parent</a>
+      <a class="nav-link" href="parent_page.php" style="color:burlywood">Parent</a>
     </li>
    
     <li class="nav-item">
-      <a class="nav-link" href="menu.php">Child</a>
+      <a class="nav-link" href="child_page.php" style="color:lightgoldenrodyellow">Child</a>
     </li>
 	<li class="nav-item">
-      <a class="nav-link" href="login 2.php">new Parent</a>
+      <a class="nav-link" href="new_parent_page.php" style="color:turquoise">new Parent</a>
     </li>
 	<li class="nav-item">
-      <a class="nav-link" href="register.php">new Child</a>
+      <a class="nav-link" href="new_child_page.php" style="color:pink">new Child</a>
     </li>
 	<li class="nav-item">
-      <a class="nav-link" href="..//web/index.php">Home</a>
+      <a class="nav-link" href="calendar.php" style="color:aquamarine">Home</a>
     </li>
 	
   </ul>
