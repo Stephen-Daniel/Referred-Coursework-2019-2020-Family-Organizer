@@ -43,7 +43,7 @@
       <a class="nav-link" href="new_child_page.php" style="color:pink">new Child</a>
     </li>
 	<li class="nav-item">
-      <a class="nav-link" href="calendar.php" style="color:aquamarine">Home</a>
+      <a class="nav-link" href="index.php" style="color:aquamarine">Home</a>
     </li>
 	
   </ul>

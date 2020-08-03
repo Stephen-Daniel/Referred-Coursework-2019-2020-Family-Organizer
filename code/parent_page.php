@@ -9,7 +9,7 @@
         <center>
             <h1 style="">Parent Page</h1>
         </center>
-      <?php include_once "calendar.php"; ?> 
+     
         
     </body>
 </html>
