@@ -8,12 +8,6 @@
         <center>
             <h1>Family Organiser</h1>
         </center>
-    <div id="mainpage-background">
-        
-    </div>
-        <?php
-        // put your code here
-        ?>
-        
+   
     </body>
 </html>
