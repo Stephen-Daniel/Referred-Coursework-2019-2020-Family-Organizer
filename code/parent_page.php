@@ -1,4 +1,6 @@
-<?php include_once "./includes/navbar.php"; ?>
+<?php include_once "./includes/navbar.php";?>
+
+
 
 <html>
     <head>
@@ -8,9 +10,11 @@
     <body style="background-color:burlywood;">
         <center>
             <h1 style="">Parent Page</h1>
-           
+                
+            
         </center>
      
         
     </body>
 </html>
+

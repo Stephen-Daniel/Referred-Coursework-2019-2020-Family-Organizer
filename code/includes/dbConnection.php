@@ -7,4 +7,8 @@ $DB_DATABASE = 'isad251_sdaniel';
 
 $conn = mysqli_connect($DB_SERVER, $DB_USER, $DB_PASSWORD, $DB_DATABASE);
 
+if (!$conn) {
+    die("Connection Failed!".mysqli_connect_error());
+}
+
 ?>

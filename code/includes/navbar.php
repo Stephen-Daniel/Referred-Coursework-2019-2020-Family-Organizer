@@ -1,4 +1,13 @@
-
+<?php
+  
+  session_start();
+  
+  require "includes/dbConnection.php";
+  
+  
+  
+  
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,24 +32,22 @@
   <ul class="navbar-nav"> 
   
 	<li class="nav-item">
-      <a class="nav-link" href="index.php" style="color:aquamarine">Home</a>
+      <a id="home" class="nav-link" href="index.php" style="color:aquamarine">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="parent_page.php" style="color:burlywood">Parent</a>
+      <a id="parent" class="nav-link" href="parent_page.php" style="color:burlywood">Parent</a>
     </li>
    
     <li class="nav-item">
-      <a class="nav-link" href="child_page.php" style="color:lightgoldenrodyellow">Child</a>
+      <a id="child" class="nav-link" href="child_page.php" style="color:lightgoldenrodyellow">Child</a>
     </li>
 	<li class="nav-item">
-      <a class="nav-link" href="new_parent_page.php" style="color:turquoise">new Parent</a>
+      <a id="newParent" class="nav-link" href="new_parent_page.php" style="color:turquoise">new Parent</a>
     </li>
 	<li class="nav-item">
-      <a class="nav-link" href="new_child_page.php" style="color:pink">new Child</a>
+      <a id="newChild" class="nav-link" href="new_child_page.php" style="color:pink">new Child</a>
     </li>
-	<li class="nav-item">
-      <a class="nav-link" href="index.php" style="color:aquamarine">Home</a>
-    </li>
+	
 	
   </ul>
 </nav>
