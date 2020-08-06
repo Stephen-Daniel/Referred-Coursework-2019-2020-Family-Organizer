@@ -1,30 +1,36 @@
 <?php include_once "./includes/navbar.php";?>
 <style>
-table,th, td {
-  border: 1px solid black;
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
 }
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
 
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>
-
 
 <html>
     <head>
+        
         <meta charset="UTF-8">
         <title>Parent Page</title>
     </head>
-    <body style="background-color:burlywood;">
+    <body onload="setTimeout(window.location.reload,5000)" style="background-color:burlywood">
         <center>
             <h1 style="">Parent Page</h1>
       
               
 	<table>
         
-       <?php $query = "SELECT * FROM appointments";
-             $result1 = mysqli_query($conn, $query);
-            while($row1 = mysqli_fetch_array($result1)):;
-       ?>
-            
+         
     <tr>
 				
                 <th>Family id</th>
@@ -35,6 +41,11 @@ table,th, td {
                 <th>Notes</th>
                 
             </tr>
+            <?php $query = "SELECT * FROM appointments";
+             $result1 = mysqli_query($conn, $query);
+            while($row1 = mysqli_fetch_array($result1)):;
+       ?>
+          
             <tr>
                 <td align="middle"><?php echo $row1[1];?> </td>
                 <td align="middle"> <?php echo $row1[2];?> </td>
@@ -64,23 +75,57 @@ table,th, td {
             <br>
             
             <div>
-  
-                <form id="crud" action="includes/add.php" method="POST">
-                    <input type="text"  name="familyId" placeholder="family id"> 
-                    <br><input type="text"  name="event" placeholder="event">
+                <h4>Add new appointments</h4>
+                <br>
+                <form id="add" action="includes/add.php" method="POST">
+                    <input type="text"  name="familyId" placeholder="family id" size="28"> 
+                    <br><input type="text"  name="event" placeholder="event" size="28">
                     <br><input type="date"  name="start" placeholder="start"> 
                     <input type="time"  name="time" placeholder="time">
-                    <br><input type="text"  name="comment" placeholder="comment"> 
-                    <br><input type="text"  name="note" placeholder="note">
-                    <br><button type="submit">add</button>
+                    <br><input type="text"  name="comment" placeholder="comment" size="28"> 
+                    <br><input type="text"  name="note" placeholder="note" size="28">
+                    <br>
+                    <br><button type="submit">submit</button>
                 </form>
-            
-            
-            
- 
- 
             </div>    
-            
+            <div>
+                <h4>Edit appointments or deadlines</h4>
+                <br>
+                <form id="edit" action="includes/edit.php" method="POST">
+                    
+                    <label for="cars">Choose a car:</label>
+                    <select id="cars" name="cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                    </select>
+                    <input type="submit">
+
+                    <input type="text"  name="familyId" placeholder="family id" size="28"> 
+                    <br><input type="text"  name="event" placeholder="event" size="28">
+                    <br><input type="date"  name="start" placeholder="start"> 
+                    <input type="time"  name="time" placeholder="time">
+                    <br><input type="text"  name="comment" placeholder="comment" size="28"> 
+                    <br><input type="text"  name="note" placeholder="note" size="28">
+                    <br>
+                    <br><button type="submit">submit</button>
+                </form>
+            </div> 
+            <div>
+                <h4>Add new appointments</h4>
+                <br>
+                <form id="delete" action="includes/add.php" method="POST">
+                    <input type="text"  name="familyId" placeholder="family id" size="28"> 
+                    <br><input type="text"  name="event" placeholder="event" size="28">
+                    <br><input type="date"  name="start" placeholder="start"> 
+                    <input type="time"  name="time" placeholder="time">
+                    <br><input type="text"  name="comment" placeholder="comment" size="28"> 
+                    <br><input type="text"  name="note" placeholder="note" size="28">
+                    <br>
+                    <br><button type="submit">submit</button>
+                </form>
+            </div> 
         </center>
      
         
