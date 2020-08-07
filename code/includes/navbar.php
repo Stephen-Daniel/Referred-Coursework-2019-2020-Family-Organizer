@@ -1,12 +1,8 @@
 <?php
   
-  session_start();
-  
+  session_start();  
   require "includes/dbConnection.php";
-  
-  
-  
-  
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,11 +27,16 @@
   <script src="//code.jquery.com/jquery.min.js"></script>
   <script src="jquery.tabledit.min.js"></script>
   <script src="jquery.tabledit.js"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+ 
   </head>
-  <body>
+  
+<body>
    
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   
   <a class="navbar-brand" href="index.php" style="color:aquamarine">Family Organiser</a>
   
@@ -59,7 +60,7 @@
       <a id="newChild" class="nav-link" href="new_child_page.php" style="color:pink">new Child</a>
     </li>
 	<li class="nav-item">
-      <a id="calendar" class="nav-link" href="index.php" style="color:pink">Calendar</a>
+      <a id="calendar" class="nav-link" href="edittable.php" style="color:pink">Calendar</a>
     </li>
 	
   </ul>
