@@ -16,7 +16,7 @@ if (!$conn) {
 
  
  mysqli_select_db($conn,"ajax_demo");
-$sql="SELECT * FROM deadlines WHERE deadline_id = '".$q."'";
+$sql="SELECT * FROM deadlines WHERE deadline_id = '".$q."' ORDER BY start ASC";
 $result = mysqli_query($conn,$sql);   
     
 
@@ -28,11 +28,22 @@ $start = $row['start'];
 $time = $row['time'];
 $comment = $row['comment'];
 $note = $row['note'];
+$date = date('Y-m-d');
+
+echo'
+                        &emsp; &emsp;
+                        deadline id &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        family id  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        deadline  &emsp;&emsp; &emsp; &emsp;&emsp;&emsp; &emsp;
+                        start  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        time &emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;
+                        comments  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
+                        notes&emsp; &emsp;&emsp; &emsp;&emsp; <br>';
 
 echo "<input type='text'  name='selectId' id='selectId' value='$q'>";
 echo "<input type='text'  name='familyId' id='familyId' value='$fam' size='28'>"; 
 echo "<input type='text'  name='deadline' id='deadline' value='$dead' size='28'>";
-echo "<input type='date'  name='start' id='start' value='$start'>";
+echo "<input type='date'  min='$date'  name='start' id='start' value='$start'>";
 echo "<input type='time'  name='time' id='time' value='$time'>";
 echo "<input type='text'  name='comment' id='comment' value='$comment' size='28'>";
 echo "<input type='text'  name='note' id='note' value='$note' size='28'>";

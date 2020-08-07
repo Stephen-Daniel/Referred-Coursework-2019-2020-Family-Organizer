@@ -7,13 +7,14 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 2px solid #dddddd;
   text-align: left;
   padding: 8px;
+  
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  
 }
 </style>
 
@@ -46,7 +47,7 @@ function showUser(str) {
             
            <div>
                 <br>
-                <h4>Edit, Delete or Add an appointments</h4>
+                <h4>Edit, Delete or Add appointments</h4>
                 
                 <form id="crud" action="includes/action.php" method="POST">
                     
@@ -66,12 +67,22 @@ function showUser(str) {
                         <option><?php echo $output['appointment_id'];?></option>
                         <?php }?>
                     </select>
-                    <div id="data" > 
+                    <div id="data" >
+                        <?php echo'
+                        &emsp; &emsp;
+                        deadline id &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        family id  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        deadline  &emsp;&emsp; &emsp; &emsp;&emsp;&emsp; &emsp;
+                        start  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        time &emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;
+                        comments  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
+                        notes&emsp; &emsp;&emsp; &emsp;&emsp; <br>'
+                        ?>
                         
                         <input type='text'  name='selectId' id='selectId' value=''>
                         <input type='text'  name='familyId' id='familyId' value='' size='28'>
                         <input type='text'  name='appointment' id='appointment' value='' size='28'>
-                        <input type='date'  name='start' id='start' value=''>
+                        <input type='date' min="<?php echo date("Y-m-d"); ?>" name='start' id='start' value=''>
                         <input type='time'  name='time' id='time' value=''>
                         <input type='text'  name='comment' id='comment' value='' size='28'>
                         <input type='text'  name='note' id='note' value='' size='28'>
@@ -154,15 +165,7 @@ function showUser(str) {
     
     </body>
 </html>
-<script>
-function clear(){
-    document.getElementById("familyId").value = "";
-    document.getElementById("appointment").value = "";
-    document.getElementById("start").value = "";
-    document.getElementById("time").value = "";
-    document.getElementById("comment").value = "";
-    document.getElementById("note").value = "";
-    
-}</script>
+
+
 
 
