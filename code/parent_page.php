@@ -1,4 +1,5 @@
-<?php include_once "./includes/navbar.php";?>
+<?php include_once "includes/navbar.php";?>
+<?php include 'includes/autoloader.inc.php'?>
 <style>
 table {
   font-family: arial, sans-serif;
@@ -165,7 +166,4 @@ function showUser(str) {
     
     </body>
 </html>
-
-
-
 

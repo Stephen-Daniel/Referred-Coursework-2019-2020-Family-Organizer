@@ -1,4 +1,8 @@
-<?php include_once "./includes/navbar.php"; ?>
+
+<?php include_once "includes/navbar.php"; ?>
+
+<?php include "includes/autoloader.inc.php"?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -10,6 +14,11 @@
             <br>
        
        <?php
+       
+       $testObj = new Test();
+       
+        $testObj->getAppointmentIds();
+        
         if (!isset($_SESSION['id'])) {
           echo '<form action="includes/login.php" method="POST">
                 <input type="text" name="login_name" placeholder="login name">
