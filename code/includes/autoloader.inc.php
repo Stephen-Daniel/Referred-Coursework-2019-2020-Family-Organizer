@@ -14,5 +14,6 @@ function myAutoLoader($className){
         
     }
     
-    include_once $fullPath;
+    //include_once $fullPath;
+    include_once $path . $className . $extension;
 }

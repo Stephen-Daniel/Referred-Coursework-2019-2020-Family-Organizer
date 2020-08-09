@@ -6,11 +6,10 @@ class Test extends Dbh {
             
             $sql = "SELECT * FROM family";
             $stmt = $this->connect()->query($sql);
-            while($row=$stmt->fetch());{
+            while($row=$stmt->fetch()){
                 
-                echo $row=$stmt->fetch()['family_first'];
-                
-                echo $row=$stmt->fetch()['family_pwd'];
+                echo $row['family_first'] .'<br>';
+
                 
             }
         }
@@ -26,19 +25,5 @@ class Test extends Dbh {
             foreach($names as $name){
                 echo $name['family_id'];
             }
-            
         }
-        
-        
-        public function getAppointmentIds(){
-            
-            $sql = "SELECT appointment_id from appointments";
-            
-            }
-        }
-        
-        
-        
-        
-        
-
+}

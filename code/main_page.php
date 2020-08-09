@@ -14,11 +14,14 @@
             <br>
        
        <?php
-       
-       $testObj = new Test();
-       
-        $testObj->getAppointmentIds();
-        
+       $test = new Test();
+       $test->getUsers();    
+            
+        ?>    
+            
+            
+       <?php
+
         if (!isset($_SESSION['id'])) {
           echo '<form action="includes/login.php" method="POST">
                 <input type="text" name="login_name" placeholder="login name">
