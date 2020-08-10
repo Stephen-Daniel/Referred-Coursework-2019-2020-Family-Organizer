@@ -86,7 +86,8 @@ function showUser(str) {
                         <input type='date' min="<?php echo date("Y-m-d"); ?>" name='start' id='start' value=''>
                         <input type='time'  name='time' id='time' value=''>
                         <input type='text'  name='comment' id='comment' value='' size='28'>
-                        <input type='text'  name='note' id='note' value='' size='28'>
+                        <!--disable note has to be in the past.-->
+                        <input type='text'  name='note' id='note' value='' size='28' disabled>
                         
                     </div>
                     <input type="submit" id="btnClear" name="btnClear" type="submit" value="CLEAR" onclick="clear()"/>
@@ -115,8 +116,12 @@ function showUser(str) {
                 <th>Notes</th>
                 
             </tr>
-            <?php $query = "SELECT * FROM appointments";
+            <?php $query = "SELECT * FROM appointments order by start";
              $result1 = mysqli_query($conn, $query);
+             
+             
+             
+             
             while($row1 = mysqli_fetch_array($result1)):;
        ?>
           
@@ -124,7 +129,14 @@ function showUser(str) {
                 <td ><?php echo $row1[0];?> </td>
                 <td ><?php echo $row1[1];?> </td>
                 <td > <?php echo $row1[2];?> </td>
-                <td > <?php echo $row1[3];?> </td>
+                <!--is the date in the past-->
+                
+                <?php 
+                if (strtotime($row1[3]) < time()) {
+                      echo  "<td style='background-color:red'> $row1[3] </td>";
+                }else{
+                      echo  "<td style='background-color:burlywood'> $row1[3] </td>";
+                };?>
 		<td > <?php echo $row1[4];?> </td>
                 <td > <?php echo $row1[5];?> </td>
                 <td > <?php echo $row1[6];?></td>

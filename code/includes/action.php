@@ -42,14 +42,14 @@ include_once 'dbConnection.php';
             }else{
                 
                 
-        header("Location: ../parent_page.php?added=error");
+      header("Location: ../parent_page.php?added=error");
     }
     
     
     if (mysqli_query($conn, $sql)){
         
-      header("Location: ../parent_page.php?added=$appointmentId,$appointment success");  
+      header("Location: ../parent_page.php?added=success");  
     }else{
-        header("Location: ../parent_page.php?added=$appointmentId error");
+        header("Location: ../parent_page.php?added=error");
     }
     
