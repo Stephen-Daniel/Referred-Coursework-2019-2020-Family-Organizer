@@ -1,4 +1,5 @@
 <?php include_once "./includes/navbar.php";?>
+<?php include 'includes/autoloader.inc.php'?>
 <style>
 table {
   font-family: arial, sans-serif;
@@ -38,7 +39,7 @@ function showUser(str) {
 }
 </script>   
         <meta charset="UTF-8">
-        <title>Parent Page</title>
+        <title>Child Page</title>
     </head>
     <body onload="setTimeout(window.location.reload,5000)" style="background-color:lightgoldenrodyellow">
         <center>
@@ -47,7 +48,7 @@ function showUser(str) {
             
            <div>
                 <br>
-                <h4>Edit, Delete or Add an Deadlines</h4>
+                <h4>Edit, Delete or Add Deadlines</h4>
                 
                 <form id="cruds" action="includes/actions.php" method="POST">
                     
@@ -85,8 +86,7 @@ function showUser(str) {
                         <input type='text'  name='selectId' id='selectId' value=''>
                         <input type='text'  name='familyId' id='familyId' value='' size='28'>
                         <input type='text'  name='deadline' id='deadline' value='' size='28'>
-                        <input type='date'  min="<?php echo date("Y-m-d"); ?>"  name='start' id='start' value=''>
-                        <input type='time'  name='time' id='time' value=''>
+                        <input type='datetime-local' min="<?php echo date("Y-m-d"); ?>" name='start' id='start' value=''>
                         <input type='text'  name='comment' id='comment' value='' size='28'>
                         <input type='text'  name='note' id='note' value='' size='28'>
                            
@@ -112,12 +112,12 @@ function showUser(str) {
                 <th>Family id</th>
                 <th>Appointments</th>
                 <th>Start</th>
-                <th>Time</th>
+                
 		<th>Comments</th>		
                 <th>Notes</th>
                 
             </tr>
-            <?php $query = "SELECT * FROM appointments WHERE family_id = '13'";
+            <?php $query = "SELECT * FROM appointments WHERE family_id = '13'  order by start ";
              $result1 = mysqli_query($conn, $query);
             while($row1 = mysqli_fetch_array($result1)):;
        ?>
@@ -126,10 +126,15 @@ function showUser(str) {
                 <td ><?php echo $row1[0];?> </td>
                 <td ><?php echo $row1[1];?> </td>
                 <td > <?php echo $row1[2];?> </td>
-                <td > <?php echo $row1[3];?> </td>
+                <?php 
+                if (strtotime($row1[3]) < time()) {
+                      echo  "<td style='background-color:red'> $row1[3] </td>";
+                }else{
+                      echo  "<td style='background-color:lightgoldenrodyellow'> $row1[3] </td>";
+                };?>
 		<td > <?php echo $row1[4];?> </td>
                 <td > <?php echo $row1[5];?> </td>
-                <td > <?php echo $row1[6];?></td>
+               
             </tr>
             <td><?php  endwhile; ?></td>
         <tr>	
@@ -137,13 +142,12 @@ function showUser(str) {
                 <th>Family id</th>
                 <th>Deadlines</th>
                 <th>Start</th>
-                <th>Time</th>
 		<th>Comments</th>		
                 <th>Notes</th>
            </tr>
             
             
-            <?php $query = "SELECT * FROM deadlines WHERE family_id = '13'";
+            <?php $query = "SELECT * FROM deadlines WHERE family_id = '13'  order by start";
              $result1 = mysqli_query($conn, $query);
             while($row1 = mysqli_fetch_array($result1)):;
        ?>
@@ -151,10 +155,15 @@ function showUser(str) {
                 <td><?php echo $row1[0];?> </td>
                 <td><?php echo $row1[1];?> </td>
                 <td> <?php echo $row1[2];?> </td>
-                <td> <?php echo $row1[3];?> </td>
+                <?php 
+                if (strtotime($row1[3]) < time()) {
+                      echo  "<td style='background-color:red'> $row1[3] </td>";
+                }else{
+                      echo  "<td style='background-color:lightgoldenrodyellow'> $row1[3] </td>";
+                };?>
 		<td> <?php echo $row1[4];?> </td>
                 <td> <?php echo $row1[5];?> </td>
-                <td> <?php echo $row1[6];?></td>
+               
             </tr>
             <td><?php  endwhile; ?></td>
             

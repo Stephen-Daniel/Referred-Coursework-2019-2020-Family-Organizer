@@ -7,7 +7,7 @@ include_once 'dbConnection.php';
     $familyId = mysqli_real_escape_string($conn, $_POST['familyId']);
     $appointment = mysqli_real_escape_string($conn, $_POST['appointment']);
     $start = mysqli_real_escape_string($conn, $_POST['start']);
-    $time = mysqli_real_escape_string($conn, $_POST['time']);
+    
     $comment = mysqli_real_escape_string($conn, $_POST['comment']);
     $note = mysqli_real_escape_string($conn, $_POST['note']);
     
@@ -20,14 +20,14 @@ include_once 'dbConnection.php';
         
         // "Save Changes" clicked
         $sql = "INSERT INTO appointments (family_id, appointment, start, time, comment, note) values
-          ('$familyId', '$appointment', '$start', '$time', '$comment','$note');";
+          ('$familyId', '$appointment', '$start', '$comment','$note');";
         
         
         } else if (isset($_POST["btnEdit"])){
          // "edit" clicked
             
             
-       $sql = "UPDATE appointments SET family_id='$familyId', appointment='$appointment', start='$start', time='$time', comment='$comment', note='$note' WHERE appointment_id='$appointmentId'";
+       $sql = "UPDATE appointments SET family_id='$familyId', appointment='$appointment', start='$start', comment='$comment', note='$note' WHERE appointment_id='$appointmentId'";
           
             
             

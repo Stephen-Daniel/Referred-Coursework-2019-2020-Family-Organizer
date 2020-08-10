@@ -25,10 +25,9 @@ while($row = mysqli_fetch_array($result)) {
 $fam = $row['family_id'];
 $dead = $row['deadline'];
 $start = $row['start'];
-$time = $row['time'];
 $comment = $row['comment'];
 $note = $row['note'];
-$date = date('Y-m-d');
+
 
 echo'
                         &emsp; &emsp;
@@ -43,8 +42,8 @@ echo'
 echo "<input type='text'  name='selectId' id='selectId' value='$q'>";
 echo "<input type='text'  name='familyId' id='familyId' value='$fam' size='28'>"; 
 echo "<input type='text'  name='deadline' id='deadline' value='$dead' size='28'>";
-echo "<input type='date'  min='$date'  name='start' id='start' value='$start'>";
-echo "<input type='time'  name='time' id='time' value='$time'>";
+echo "<input type='datetime-local'  name='start' id='start' value='$start'>";
+
 echo "<input type='text'  name='comment' id='comment' value='$comment' size='28'>";
 echo "<input type='text'  name='note' id='note' value='$note' size='28'>";
   
