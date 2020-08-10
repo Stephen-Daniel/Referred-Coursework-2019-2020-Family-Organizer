@@ -14,9 +14,11 @@
             <br>
        
        <?php
-       $test = new Test();
-       $test->getUsers();    
-            
+      // $test = new UsersView();
+      // $test->showUser("Stephen");
+      // $test2 = new UsersContr();
+      // $test2->createUser("Louise","Daniel", "louise@gmail.com", "parent", "parent");
+      // $test->showUser("Louise");
         ?>    
             
             

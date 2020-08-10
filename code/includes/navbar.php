@@ -60,7 +60,7 @@
       <a id="newChild" class="nav-link" href="new_child_page.php" style="color:pink">new Child</a>
     </li>
 	<li class="nav-item">
-      <a id="calendar" class="nav-link" href="index.php" style="color:pink">tester</a>
+      <a id="calendar" class="nav-link" href="api_page.php" style="color:pink">API</a>
     </li>
 	
   </ul>
