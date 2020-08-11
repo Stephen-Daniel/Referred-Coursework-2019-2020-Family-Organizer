@@ -8,5 +8,8 @@ class UsersContr extends Users{
         $this->setUser($familyFirst, $familyLast, $familyEmail, $familyFid, $familyPwd);
     }
     
-    
+    public function createNewAppointment($familyId, $appointment, $start, $comment, $note){
+        
+        $this->setNewAppointment($familyId, $appointment, $start, $comment, $note);
+    }
 }

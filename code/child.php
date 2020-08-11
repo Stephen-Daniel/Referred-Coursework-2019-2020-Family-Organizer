@@ -39,8 +39,8 @@ echo'
                         comments  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
                         notes&emsp; &emsp;&emsp; &emsp;&emsp; <br>';
 
-echo "<input type='text'  name='selectId' id='selectId' value='$q'>";
-echo "<input type='text'  name='familyId' id='familyId' value='$fam' size='28'>"; 
+echo "<input type='text'  name='selectId' id='selectId' value='$q'   readonly='true'>";
+echo "<input type='text'  name='familyId' id='familyId' value='$fam' size='28'   readonly='true'>"; 
 echo "<input type='text'  name='deadline' id='deadline' value='$dead' size='28'>";
 echo "<input type='datetime-local'  name='start' id='start' value='$start'>";
 

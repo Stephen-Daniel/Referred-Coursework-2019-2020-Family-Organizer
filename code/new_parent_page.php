@@ -16,9 +16,9 @@
                 <br>
                 <input type="text" name="email" placeholder="e-mail">
                 <br>
-                <input type="text" name="parent" placeholder="Parent" disabled="true">
+                <input type="text" name="parent" placeholder="parent" disabled="true">
                 <br>
-                <input type="text" name="pwd" placeholder="Admin" disabled="true">
+                <input type="text" name="pwd" placeholder="parent" disabled="true">
                 <br>
                 <button type="submit" name="submit">Add new parent</button>
                     

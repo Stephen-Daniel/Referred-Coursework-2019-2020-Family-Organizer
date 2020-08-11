@@ -10,8 +10,9 @@ table {
 td, th {
   border: 2px solid #dddddd;
   text-align: left;
-  padding: 8px;
   
+    padding: 2px;
+
 }
 
 tr:nth-child(even) {
@@ -33,9 +34,7 @@ function showUser(str) {
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("data").innerHTML = this.responseText;
-        
-                
-        
+
       }
     };
     xmlhttp.open("GET","getuser.php?q="+str,true);
@@ -48,21 +47,23 @@ function showUser(str) {
     </head>
     <body onload="setTimeout(window.location.reload,5000)" style="background-color:burlywood">
         <center>
-            <h1 style="">Parent Page</h1><br><br><br>
-      
+            
+            <?php
+            $nam = $_SESSION['name'];
+            echo "<h1>$nam's page</h1>";
+            ?>
+            
             
            <div>
-                <br>
-                <h4>Edit, Delete, Add new or Add notes. appointments</h4>
+                <h3>Edit, Delete, Add new or Add notes. appointments</h3>
                 
                 <form id="crud" action="includes/action.php" method="POST">
                     
                     
-                    <?php $query = "SELECT appointment_id from appointments";
-                     $result = mysqli_query($conn, $query);
-                    
-                    ?>
-                        
+                      <?php
+                      $appIds = new UsersView();
+                      $result = $appIds->showAllAppointmentIds();
+                      ?>
                  
                     <select name="users" id="users" onchange="showUser(this.value)">
                         
@@ -76,37 +77,34 @@ function showUser(str) {
                     <div id="data" >
                         <?php echo'
                         &emsp; &emsp;
-                        deadline id &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
-                        family id  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
-                        deadline  &emsp;&emsp; &emsp; &emsp;&emsp;&emsp; &emsp;
+                        appointment id &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        family id  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;
+                        appointment  &emsp;&emsp; &emsp; &emsp;&emsp;&emsp; &emsp; 
                         start  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                         time &emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;
                         comments  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
                         notes&emsp; &emsp;&emsp; &emsp;&emsp; <br>'
                         ?>
                         
-                        <input type='text'  name='selectId' id='selectId' value='' disabled>
+                        <input type='text'  name='selectId' id='selectId' value=''  readonly='true'>
                         <input type='text'  name='familyId' id='familyId' value='' size='28'>
                         <input type='text'  name='appointment' id='appointment' value='' size='28'>
-                        <input type='datetime-local' min="<?php echo date("Y-m-d"); ?>" name='start' id='start' value=''>
+                        <input type='datetime-local' min='<?php echo date("Y-m-d"); ?>T00:00' name='start' id='start' value=''>
                         <input type='text'  name='comment' id='comment' value='' size='28'>
                         <!--disable note has to be in the past.-->
-                        <input type='text'  name='note' id='note' value='' size='28' disabled>
+                        <input type='text'  name='note' id='note' value='' size='28'  readonly='true'>
                         
                     </div>
                     <input type="submit" id="btnClear" name="btnClear" type="submit" value="CLEAR" onclick="clear()"/>
-                    <input type="submit" id="btnEdit" name="btnEdit" type="submit" value="EDIT"/>
+                    <input type="submit" id="btnEdit" name="btnEdit" type="submit" value="UPDATE"/>
                     <input type="submit" id="btnDelete" name="btnDelete"  type="submit" value="DELETE"/>
-                    <input type="submit" id="btnAdd" name="btnAdd"  type="submit" value="ADD"/>
+                    <input type="submit" id="btnAdd" name="btnAdd"  type="submit" value="ADD NEW"/>
                     
                    
                     
                 </form>
             </div> 
-               
-            
-            
-         <br><br><br>     
+   
 	<table>
         
          
@@ -120,7 +118,9 @@ function showUser(str) {
                 <th>Notes</th>
                 
             </tr>
-            <?php $query = "SELECT * FROM appointments order by start";
+            <?php 
+            // hard to workout the code
+            $query = "SELECT * FROM appointments order by start";
              $result1 = mysqli_query($conn, $query);
 
             while($row1 = mysqli_fetch_array($result1)):;

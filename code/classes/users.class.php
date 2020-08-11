@@ -31,5 +31,35 @@ class Users extends Dbh{
             
             return json_encode($results);
         }
+        
+        protected function getAllAppointmentIds(){
+            $sql= "SELECT appointment_id from appointments";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+        protected function getAllAppointmentsOrderByStart(){
+            $sql= "SELECT * FROM appointments order by start";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+        protected function getAllDeadlineIds(){
+            $sql= "SELECT deadline_id from deadlines";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+        protected function setNewAppointment($familyId, $appointment, $start, $comment, $note){
+            
+            $sql = "INSERT INTO appointments (family_id, appointment, start, comment, note) values (?,?,?,?,?)";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$familyId, $appointment, $start, $comment, $note]);
+            
+        }
+        
     }
     

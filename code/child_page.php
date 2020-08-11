@@ -1,5 +1,7 @@
 <?php include_once "./includes/navbar.php";?>
-<?php include 'includes/autoloader.inc.php'?>
+<?php include 'includes/autoloader.inc.php';
+
+?>
 <style>
 table {
   font-family: arial, sans-serif;
@@ -10,7 +12,7 @@ table {
 td, th {
   border: 2px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 2px;
   
 }
 
@@ -43,20 +45,27 @@ function showUser(str) {
     </head>
     <body onload="setTimeout(window.location.reload,5000)" style="background-color:lightgoldenrodyellow">
         <center>
-            <h1 style="">Child Page</h1><br><br><br>
-      
             
+            <?php
+            $userId = $_SESSION['uid'];
+            $nam = $_SESSION['name'];
+            echo "<h1>$nam's page</h1>";
+            ?>
+            
+            
+           
            <div>
-                <br>
-                <h4>Edit, Delete or Add Deadlines</h4>
+                
+                <h3>Edit, Delete or Add Deadlines</h3>
                 
                 <form id="cruds" action="includes/actions.php" method="POST">
                     
                     
                     <?php
+                     $deadIds = new UsersView();
                      
-                     $query = "SELECT deadline_id from deadlines ";
-                     $result = mysqli_query($conn, $query);
+                     
+                     $result = $deadIds->showAllDeadlineIds();
                     
                     ?>
                         
@@ -80,11 +89,12 @@ function showUser(str) {
                         start  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                         time &emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;
                         comments  &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
-                        notes&emsp; &emsp;&emsp; &emsp;&emsp; <br>'
+                        notes&emsp; &emsp;&emsp; &emsp;&emsp; <br>';
+                        $faId = $_SESSION['uid'];
                         ?>
                         
-                        <input type='text'  name='selectId' id='selectId' value=''>
-                        <input type='text'  name='familyId' id='familyId' value='' size='28'>
+                        <input type='text'  name='selectId' id='selectId' value=''   readonly='true'>
+                        <input type='text'  name='familyId' id='familyId' value='<?php echo $faId?>' size='28'    readonly='true'>
                         <input type='text'  name='deadline' id='deadline' value='' size='28'>
                         <input type='datetime-local' min="<?php echo date("Y-m-d"); ?>" name='start' id='start' value=''>
                         <input type='text'  name='comment' id='comment' value='' size='28'>
@@ -92,51 +102,18 @@ function showUser(str) {
                            
                     </div>
                     
-                    <input type="submit" id="btnEdit" name="btnEdit" type="submit" value="EDIT"/>
+                    <input type="submit" id="btnEdit" name="btnEdit" type="submit" value="UPDATE"/>
                     <input type="submit" id="btnDelete" name="btnDelete"  type="submit" value="DELETE"/>
-                    <input type="submit" id="btnAdd" name="btnAdd"  type="submit" value="ADD"/>
+                    <input type="submit" id="btnAdd" name="btnAdd"  type="submit" value="ADD NEW"/>
                     
                    
                     
                 </form>
             </div> 
-               
-            
-            
-         <br><br><br>     
+    
 	<table>
         
-         
-    <tr>
-		<th>Appointment id</th>		
-                <th>Family id</th>
-                <th>Appointments</th>
-                <th>Start</th>
-                
-		<th>Comments</th>		
-                <th>Notes</th>
-                
-            </tr>
-            <?php $query = "SELECT * FROM appointments WHERE family_id = '13'  order by start ";
-             $result1 = mysqli_query($conn, $query);
-            while($row1 = mysqli_fetch_array($result1)):;
-       ?>
-          
-            <tr>
-                <td ><?php echo $row1[0];?> </td>
-                <td ><?php echo $row1[1];?> </td>
-                <td > <?php echo $row1[2];?> </td>
-                <?php 
-                if (strtotime($row1[3]) < time()) {
-                      echo  "<td style='background-color:red'> $row1[3] </td>";
-                }else{
-                      echo  "<td style='background-color:lightgoldenrodyellow'> $row1[3] </td>";
-                };?>
-		<td > <?php echo $row1[4];?> </td>
-                <td > <?php echo $row1[5];?> </td>
-               
-            </tr>
-            <td><?php  endwhile; ?></td>
+     
         <tr>	
                 <th>Deadline id</th>
                 <th>Family id</th>
@@ -147,7 +124,7 @@ function showUser(str) {
            </tr>
             
             
-            <?php $query = "SELECT * FROM deadlines WHERE family_id = '13'  order by start";
+            <?php $query = "SELECT * FROM deadlines WHERE family_id = $userId  order by start";
              $result1 = mysqli_query($conn, $query);
             while($row1 = mysqli_fetch_array($result1)):;
        ?>
@@ -167,7 +144,39 @@ function showUser(str) {
             </tr>
             <td><?php  endwhile; ?></td>
             
+               
+    <tr>
+		<th>Appointment id</th>		
+                <th>Family id</th>
+                <th>Appointments</th>
+                <th>Start</th>
+		<th>Comments</th>		
+                <th>Notes</th>
+                
+            </tr>
+            <?php 
             
+            
+            $query = "SELECT * FROM appointments WHERE family_id = $userId  order by start ";
+             $result1 = mysqli_query($conn, $query);
+            while($row1 = mysqli_fetch_array($result1)):;
+       ?>
+          
+            <tr>
+                <td ><?php echo $row1[0];?> </td>
+                <td ><?php echo $row1[1];?> </td>
+                <td > <?php echo $row1[2];?> </td>
+                <?php 
+                if (strtotime($row1[3]) < time()) {
+                      echo  "<td style='background-color:red'> $row1[3] </td>";
+                }else{
+                      echo  "<td style='background-color:lightgoldenrodyellow'> $row1[3] </td>";
+                };?>
+		<td > <?php echo $row1[4];?> </td>
+                <td > <?php echo $row1[5];?> </td>
+               
+            </tr>
+            <td><?php  endwhile; ?></td> 
     </table>
             <br>
              

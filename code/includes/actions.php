@@ -19,7 +19,7 @@ include_once 'dbConnection.php';
         
         
         // "Save Changes" clicked
-        $sql = "INSERT INTO deadlines (family_id, deadline, start, time, comment, note) values
+        $sql = "INSERT INTO deadlines (family_id, deadline, start, comment, note) values
           ('$familyId', '$deadline', '$start', '$comment','$note');";
         
         

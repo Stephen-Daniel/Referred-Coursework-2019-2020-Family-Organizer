@@ -39,6 +39,8 @@ if (isset($_POST['login_submit'])) {
           
           $_SESSION['id'] = $row['family_fid'];
           $_SESSION['parentOrChild'] = $row['family_fid'];
+          $_SESSION['uid'] = $row['family_id'];
+          $_SESSION['name'] = $row['family_first'];
           $page = $row['family_fid'];
           header("Location: ../{$page}_page.php?login=success $name");
           

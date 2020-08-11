@@ -9,7 +9,7 @@
     
     
     $new_parent_sql = "insert into family (family_first, family_last, family_email, family_fid, family_pwd) values
-    ('$parent_first', '$parent_last', '$parent_email', 'parent', 'admin');";
+    ('$parent_first', '$parent_last', '$parent_email', 'parent', 'parent');";
     
     mysqli_query($conn, $new_parent_sql);    
 

@@ -1,5 +1,5 @@
-<?php
 
+<?php 
 include_once 'dbConnection.php';
    
     
@@ -14,14 +14,13 @@ include_once 'dbConnection.php';
    
     
     if (isset($_POST["btnAdd"])){
-        
-    
-        
-        
+
         // "Save Changes" clicked
-        $sql = "INSERT INTO appointments (family_id, appointment, start, time, comment, note) values
+        $sql = "INSERT INTO appointments (family_id, appointment, start, comment, note) values
           ('$familyId', '$appointment', '$start', '$comment','$note');";
         
+        //$newApp = new UsersContr();
+        //$newApp->createNewAppointment($familyId, $appointment, $start, $comment, $note);
         
         } else if (isset($_POST["btnEdit"])){
          // "edit" clicked
@@ -42,7 +41,7 @@ include_once 'dbConnection.php';
             }else{
                 
                 
-      header("Location: ../parent_page.php?added=error");
+      header("Location: ../parent_page.php?added=error btn");
     }
     
     
@@ -50,6 +49,6 @@ include_once 'dbConnection.php';
         
       header("Location: ../parent_page.php?added=success");  
     }else{
-        header("Location: ../parent_page.php?added=error");
+        header("Location: ../parent_page.php?added=error sql");
     }
     
