@@ -38,7 +38,7 @@
    
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   
-  <a class="navbar-brand" href="index.php" style="color:aquamarine">Family Organiser</a>
+  <a class="navbar-brand" href="" style="color:aquamarine">Family Organiser</a>
   
   <!-- Links -->
   <ul class="navbar-nav"> 
@@ -62,8 +62,27 @@
 	<li class="nav-item">
       <a id="calendar" class="nav-link" href="api_page.php" style="color:pink">API</a>
     </li>
-	
+    <?php
+
+        if (!isset($_SESSION['id'])) {
+          echo '<form action="includes/login.php" method="POST">
+                <input type="text" name="login_name" placeholder="login name" style="margin: 13px";>
+                <input type="text" name="login_password" placeholder="login password">
+                <button type="submit" name="login_submit">Login</button>
+            </form>';
+          
+        }
+        else if (isset($_SESSION['id'])) {
+          echo '<form action="includes/logout.php" method="post" style="margin: 13px";>
+            <button type="submit" name="login-submit">Logout</button>
+          </form>';
+         $results = $_SESSION['parentOrChild'];
+         echo $results;
+         
+        }
+        ?>
   </ul>
+  
 </nav>
 
 </body>
